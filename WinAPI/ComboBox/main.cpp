@@ -1,4 +1,6 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include<Windows.h>
+#include<stdio.h>
 #include"resource.h"
 
 CONST CHAR* g_sz_VALUES[] = { "This", "is", "my", "first", "Combo", "Box" };
@@ -25,6 +27,28 @@ BOOL CALLBACK DlgProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	}
 		break;
 	case WM_COMMAND:
+		switch (LOWORD(wParam))
+		{
+		case IDOK:
+		{
+			HWND hCombo = GetDlgItem(hwnd, IDC_COMBO);
+			INT i = SendMessage(hCombo, CB_GETCURSEL, 0, 0);
+			if (i == CB_ERR)
+			{
+				MessageBox(hwnd, "Вы ничего не выбрали", NULL, MB_OK | MB_ICONERROR);
+				break;
+			}
+			CONST INT SIZE = 256;
+			CHAR sz_buffer[SIZE] = {};
+			CHAR sz_message[SIZE] = {};
+			SendMessage(hCombo, CB_GETLBTEXT, i, (LPARAM)sz_buffer);
+			//https://legacy.cplusplus.com/reference/cstdio/printf/?kw=printf
+			sprintf(sz_message, "Вы выбрали элемент №%i со значением %s", i, sz_buffer);
+			MessageBox(hwnd, sz_message, "Info", MB_OK | MB_ICONINFORMATION);
+		}
+		break;
+		case IDCANCEL:EndDialog(hwnd, 0);
+		}
 		break;
 	case WM_CLOSE:
 		EndDialog(hwnd, 0);
