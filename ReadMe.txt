@@ -2,6 +2,10 @@ https://github.com/okovtun/PV_522_WIN.git
 https://www.youtube.com/playlist?list=PLeqyOOqxeiINVm9qYjf8vL_BT0gKdaFR_
 
 TODO:
+В Solution 'WinAPI' добавить проект 'CalcHW' и в этом проекте реализовать калькулятор,
+наподобие калькулятора Windows.
+
+DONE:
 1. В проекте 'MainWindow' окно должно всегда запускаться ровно по центру экрана,
    и занимать ровно 75% экрана;
 2. В том же проекте при изменении размера окна и перемещении окна по экрану,
