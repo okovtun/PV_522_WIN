@@ -1,7 +1,16 @@
 https://github.com/okovtun/PV_522_WIN.git
 https://www.youtube.com/playlist?list=PLeqyOOqxeiINVm9qYjf8vL_BT0gKdaFR_
 
+Disable stupid VS features:
+https://stackoverflow.com/questions/73964338/how-to-disable-automatic-brace-surrounding-on-selection-in-visual-studio
+
 TODO:
+1. Сделать COMMIT;
+2. Создать ветку 'KeyboardHW';
+3. На ветке 'KeyboardHW' добить оставшиеся клавиши;
+	https://learn.microsoft.com/en-us/windows/win32/inputdev/wm-keydown
+
+DONE:
 В Solution 'WinAPI' добавить проект 'CalcHW' и в этом проекте реализовать калькулятор,
 наподобие калькулятора Windows.
 
