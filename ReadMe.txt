@@ -6,6 +6,12 @@ https://stackoverflow.com/questions/73964338/how-to-disable-automatic-brace-surr
 
 TODO:
 1. Сделать COMMIT;
+2. Создать ветку 'CalculationsHW';
+3. На ветке 'CalculationsHW' организовать вычисления конвейером;
+4. Применить значки к кнопкам;
+
+DONE:
+1. Сделать COMMIT;
 2. Создать ветку 'KeyboardHW';
 3. На ветке 'KeyboardHW' добить оставшиеся клавиши;
 	https://learn.microsoft.com/en-us/windows/win32/inputdev/wm-keydown
