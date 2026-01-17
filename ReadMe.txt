@@ -5,6 +5,9 @@ Disable stupid VS features:
 https://stackoverflow.com/questions/73964338/how-to-disable-automatic-brace-surrounding-on-selection-in-visual-studio
 
 TODO:
+1. Протестировать конвейерные вычисления и поискать в них подводные камни;
+
+DONE:
 1. Сделать COMMIT;
 2. Создать ветку 'CalculationsHW';
 3. На ветке 'CalculationsHW' организовать вычисления конвейером;
