@@ -5,7 +5,17 @@ Disable stupid VS features:
 https://stackoverflow.com/questions/73964338/how-to-disable-automatic-brace-surrounding-on-selection-in-visual-studio
 
 TODO:
-1. Протестировать конвейерные вычисления и поискать в них подводные камни;
+0. Сделать COMMIT на 'master', после COMMIT скачать архивы в папку 'ButtonsBMP'
+   и распаковать их в соответсвующие папки,
+   после чего сделать еще один COMMIT 'ButtonsBMP.RAR', и только после этого
+   создать ветку 'ButtonsBMP_HW';
+1. Применить к кнопкам любую тему на выбор:
+	https://github.com/okovtun/PV_522_WIN/tree/master/WinAPI/Calc/ButtonsBMP;
+2. ***Обеспечить переключение тем калькулятора через контекстное меню;
+3. Почитать про кнопки:
+	https://learn.microsoft.com/en-us/windows/win32/controls/buttons
+	https://learn.microsoft.com/en-us/windows/win32/controls/button-types-and-styles	!!!
+	https://learn.microsoft.com/en-us/windows/win32/controls/button-styles
 
 DONE:
 1. Сделать COMMIT;

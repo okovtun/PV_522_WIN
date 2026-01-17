@@ -139,6 +139,7 @@ LRESULT WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 			GetModuleHandle(NULL),
 			NULL
 		);
+		//https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-loadimagea
 		HBITMAP bmpButton0 = (HBITMAP)LoadImage
 		(
 			GetModuleHandle(NULL),
