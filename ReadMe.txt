@@ -5,6 +5,12 @@ Disable stupid VS features:
 https://stackoverflow.com/questions/73964338/how-to-disable-automatic-brace-surrounding-on-selection-in-visual-studio
 
 TODO:
+1. Создать ветку 'Colors';
+2. Для каждой темы подобрать цветовую схему и обеспечить переключение цветовых схем 
+   вместе с переключением скинов;
+3. Применить кастомный шрифт к дисплею калькулятора;
+
+DONE:
 0. Сделать COMMIT на 'master', после COMMIT скачать архивы в папку 'ButtonsBMP'
    и распаковать их в соответсвующие папки,
    после чего сделать еще один COMMIT 'ButtonsBMP.RAR', и только после этого
