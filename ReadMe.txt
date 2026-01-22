@@ -5,9 +5,16 @@ Disable stupid VS features:
 https://stackoverflow.com/questions/73964338/how-to-disable-automatic-brace-surrounding-on-selection-in-visual-studio
 
 TODO:
-1. Создать ветку 'Colors';
+1. Создать ветку 'ResourceOnlyDLL';
+2. Значки кнопок вынести в *.DLL-файлы "square_blue.dll" и "metal_mistral.dll":
+	https://learn.microsoft.com/en-us/cpp/build/creating-a-resource-only-dll?view=msvc-170
+	LoadLibrary("filename");
+	FreeLibrary(???);
+
+DONE:
+1. Создать ветку 'Colors';	DONE
 2. Для каждой темы подобрать цветовую схему и обеспечить переключение цветовых схем 
-   вместе с переключением скинов;
+   вместе с переключением скинов;	DONE
 3. Применить кастомный шрифт к дисплею калькулятора;
 
 DONE:

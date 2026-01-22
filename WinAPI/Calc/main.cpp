@@ -13,7 +13,9 @@
 #define g_i_START_X					10
 #define g_i_START_Y					10
 #define g_i_DISPLAY_WIDTH			g_i_BUTTON_SIZE*5 + g_i_INTERVAL*4
-#define g_i_DISPLAY_HEIGHT			22
+#define g_i_DISPLAY_HEIGHT			g_i_BUTTON_SIZE
+#define g_i_FONT_HEIGHT				(g_i_DISPLAY_HEIGHT-2)
+#define g_i_FONT_WIDTH				g_i_FONT_HEIGHT/2.5
 #define g_i_BUTTON_START_X			g_i_START_X
 #define g_i_BUTTON_START_Y			g_i_START_Y + g_i_DISPLAY_HEIGHT + g_i_INTERVAL
 
@@ -27,7 +29,7 @@ CONST CHAR g_OPERATIONS[] = "+-*/";
 enum Skin { SquareBlue, MetalMistral };
 enum Color { MainBackgroud, DisplayBackground, Font };
 CONST CHAR* g_SKINS[] = { "square_blue", "metal_mistral" };
-CONST COLORREF g_COLORS[2][3] = 
+CONST COLORREF g_COLORS[2][3] =
 {
 	{ RGB(0,0,200), RGB(0,0,100), RGB(200,200,200) },
 	{ RGB(100,100,100), RGB(50,50,50), RGB(50,200,50) },
@@ -95,6 +97,7 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpCmdLine, IN
 LRESULT WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
 	static Skin skin = Skin::SquareBlue;
+	static HFONT hFont = NULL;
 	switch (uMsg)
 	{
 	case WM_CREATE:
@@ -116,6 +119,25 @@ LRESULT WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 			GetModuleHandle(NULL),
 			NULL
 		);
+		AddFontResourceEx("Fonts\\digital-7 (mono).ttf", FR_PRIVATE, 0);
+		//https://learn.microsoft.com/en-us/windows/win32/api/wingdi/nf-wingdi-createfonta
+		hFont = CreateFont
+		(
+			g_i_FONT_HEIGHT,g_i_FONT_WIDTH,
+			0,0,500,			//Escapement,Orientation,Width
+			FALSE,FALSE,FALSE,	//Italic, Underline, Strikeout
+			DEFAULT_CHARSET,
+			OUT_DEFAULT_PRECIS,
+			CLIP_DEFAULT_PRECIS,
+			ANTIALIASED_QUALITY,
+			DEFAULT_PITCH,
+			"Digital-7 Mono"
+			//"DS-Digital"
+		);
+		SendMessage(hEdit, WM_SETFONT, (WPARAM)hFont, TRUE);
+		//DeleteObject(hFont);
+		//hFont = NULL;
+
 		//////////////////////////////////////////////////////////////////
 		CHAR sz_digit[2] = {};
 		for (int i = 6; i >= 0; i -= 3)
@@ -227,7 +249,7 @@ LRESULT WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	////////////////////////////////////////////////////////////////////////
 	case WM_CTLCOLOREDIT:
 	{
-		HDC hdc = (HDC)wParam;	//Handler to Device Context.
+		HDC hdc = (HDC)wParam;	//Handle to Device Context.
 		//Контекст устройства - это набор ресурсов, привязанных к определенному кстройству,
 		//позволяющий применять в этому устройству графические функции.
 		//В ОС Windows абсолютно для любого окна можно получить контекст устройства при помощи функции GetDC(HWND
@@ -497,6 +519,7 @@ LRESULT WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	break;
 	case WM_DESTROY:
 		FreeConsole();
+		DeleteObject(hFont);
 		PostQuitMessage(0);
 		break;
 	case WM_CLOSE:
