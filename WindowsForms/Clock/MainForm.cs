@@ -34,5 +34,14 @@ namespace Clock
 			if (checkBoxShowWeekday.Checked)
 				labelTime.Text += $"\n{DateTime.Now.DayOfWeek}";
 		}
+
+		private void buttonHideControls_Click(object sender, EventArgs e)
+		{
+			this.FormBorderStyle = FormBorderStyle.None;
+			checkBoxShowDate.Visible = false;
+			checkBoxShowWeekday.Visible = false;
+			buttonHideControls.Visible = false;
+			this.ShowInTaskbar = false;
+		}
 	}
 }
