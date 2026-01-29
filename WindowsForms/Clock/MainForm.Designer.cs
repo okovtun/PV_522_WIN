@@ -35,6 +35,7 @@
 			this.checkBoxShowDate = new System.Windows.Forms.CheckBox();
 			this.checkBoxShowWeekday = new System.Windows.Forms.CheckBox();
 			this.buttonHideControls = new System.Windows.Forms.Button();
+			this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
 			this.SuspendLayout();
 			// 
 			// labelTime
@@ -87,6 +88,12 @@
 			this.buttonHideControls.UseVisualStyleBackColor = true;
 			this.buttonHideControls.Click += new System.EventHandler(this.buttonHideControls_Click);
 			// 
+			// notifyIcon
+			// 
+			this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+			this.notifyIcon.Text = "Clock PV_522";
+			this.notifyIcon.Visible = true;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -114,6 +121,7 @@
 		private System.Windows.Forms.CheckBox checkBoxShowDate;
 		private System.Windows.Forms.CheckBox checkBoxShowWeekday;
 		private System.Windows.Forms.Button buttonHideControls;
+		private System.Windows.Forms.NotifyIcon notifyIcon;
 	}
 }
 
