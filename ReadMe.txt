@@ -11,6 +11,10 @@ Jeffrey Richter:
 https://github.com/maybez/maybe/blob/master/Books/windows/Windows%20Via%20C%EF%BC%8FC++,Fifth%20Edition%20.pdf
 
 TODO:
+1. Почитать про двойную буферизацию;
+2. 
+
+DONE:
 1. На форму добавить 'checkBoxShowWeekday', который будет отображать или скрывать день недели;	DONE
 2. *Форма всегда должна запускаиться в правом верхнем углу экрана, независимо от разрешения;	DONE
 3. Залить проект на GitHub и прислать ссылку на репозиторий;	DONE

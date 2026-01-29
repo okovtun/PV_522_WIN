@@ -34,14 +34,23 @@ namespace Clock
 			if (checkBoxShowWeekday.Checked)
 				labelTime.Text += $"\n{DateTime.Now.DayOfWeek}";
 		}
-
+		void SetVisibility(bool visible)
+		{
+			checkBoxShowDate.Visible = visible;	//Делает 'checkBoxShowDate' невидимым
+			checkBoxShowWeekday.Visible = visible;//Делает 'checkBoxShowWeekday' невидимым
+			buttonHideControls.Visible = visible; //Делает кнопку 'buttonHideControls' невидимой
+			this.ShowInTaskbar = visible;//Скрываем кнопку приложения в панели задач
+			this.FormBorderStyle = visible ? FormBorderStyle.FixedToolWindow : FormBorderStyle.None;//Полностью убираем границы окна.
+			this.TransparencyKey = visible ? Color.Empty : this.BackColor;//Делаем окно прозрачным.
+			//Для того чтобы сделать окно прозрачным, его TransparencyKey должен совпадать с BackColor.
+		}
 		private void buttonHideControls_Click(object sender, EventArgs e)
 		{
-			this.FormBorderStyle = FormBorderStyle.None;
-			checkBoxShowDate.Visible = false;
-			checkBoxShowWeekday.Visible = false;
-			buttonHideControls.Visible = false;
-			this.ShowInTaskbar = false;
+			SetVisibility(false);
+		}
+		private void labelTime_DoubleClick(object sender, EventArgs e)
+		{
+			SetVisibility(true);
 		}
 	}
 }
