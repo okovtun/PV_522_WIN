@@ -51,17 +51,25 @@ namespace Clock
 		void LoadSettings()
 		{
 			Directory.SetCurrentDirectory($"{Application.ExecutablePath}\\..\\..\\..");
-			StreamReader reader = new StreamReader("Settings.ini");
-			tsmiTopmost.Checked = bool.Parse(reader.ReadLine());
-			tsmiShowControls.Checked = bool.Parse(reader.ReadLine());
-			tsmiShowDate.Checked = bool.Parse(reader.ReadLine());
-			tsmiShowWeekday.Checked = bool.Parse(reader.ReadLine());
-			tsmiAutorun.Checked = bool.Parse(reader.ReadLine());
-			labelTime.BackColor = backgroundDialog.Color = Color.FromArgb(Convert.ToInt32(reader.ReadLine()));
-			labelTime.ForeColor = foregroundDialog.Color = Color.FromArgb(Convert.ToInt32(reader.ReadLine()));
-			//fontDialog = new FontDialog(this);
-			fontDialog.FontFile = reader.ReadLine();
-			reader.Close();
+			try
+			{
+				StreamReader reader = new StreamReader("Settings.ini");
+				tsmiTopmost.Checked = bool.Parse(reader.ReadLine());
+				tsmiShowControls.Checked = bool.Parse(reader.ReadLine());
+				tsmiShowDate.Checked = bool.Parse(reader.ReadLine());
+				tsmiShowWeekday.Checked = bool.Parse(reader.ReadLine());
+				tsmiAutorun.Checked = bool.Parse(reader.ReadLine());
+				labelTime.BackColor = backgroundDialog.Color = Color.FromArgb(Convert.ToInt32(reader.ReadLine()));
+				labelTime.ForeColor = foregroundDialog.Color = Color.FromArgb(Convert.ToInt32(reader.ReadLine()));
+				//fontDialog = new FontDialog(this);
+				fontDialog.FontFile = reader.ReadLine();
+				labelTime.Font = fontDialog.ApplyFontExample(fontDialog.FontFile);
+				reader.Close();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(this, ex.Message);
+			}
 		}
 
 		private void timer_Tick(object sender, EventArgs e)
