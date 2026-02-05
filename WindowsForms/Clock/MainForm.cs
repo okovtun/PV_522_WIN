@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Diagnostics;
 using Microsoft.Win32;
 
 namespace Clock
@@ -28,6 +30,38 @@ namespace Clock
 			backgroundDialog = new ColorDialog();
 			foregroundDialog = new ColorDialog();
 			fontDialog = new FontDialog(this);
+			LoadSettings();
+		}
+		void SaveSettings()
+		{
+			Directory.SetCurrentDirectory($"{Application.ExecutablePath}\\..\\..\\..");
+			string filename = "Settings.ini";
+			StreamWriter writer = new StreamWriter(filename);
+			writer.WriteLine(tsmiTopmost.Checked);
+			writer.WriteLine(tsmiShowControls.Checked);
+			writer.WriteLine(tsmiShowDate.Checked);
+			writer.WriteLine(tsmiShowWeekday.Checked);
+			writer.WriteLine(tsmiAutorun.Checked);
+			writer.WriteLine(labelTime.BackColor.ToArgb());
+			writer.WriteLine(labelTime.ForeColor.ToArgb());
+			writer.WriteLine(fontDialog.FontFile);
+			writer.Close();
+			Process.Start("notepad", filename);
+		}
+		void LoadSettings()
+		{
+			Directory.SetCurrentDirectory($"{Application.ExecutablePath}\\..\\..\\..");
+			StreamReader reader = new StreamReader("Settings.ini");
+			tsmiTopmost.Checked = bool.Parse(reader.ReadLine());
+			tsmiShowControls.Checked = bool.Parse(reader.ReadLine());
+			tsmiShowDate.Checked = bool.Parse(reader.ReadLine());
+			tsmiShowWeekday.Checked = bool.Parse(reader.ReadLine());
+			tsmiAutorun.Checked = bool.Parse(reader.ReadLine());
+			labelTime.BackColor = backgroundDialog.Color = Color.FromArgb(Convert.ToInt32(reader.ReadLine()));
+			labelTime.ForeColor = foregroundDialog.Color = Color.FromArgb(Convert.ToInt32(reader.ReadLine()));
+			//fontDialog = new FontDialog(this);
+			fontDialog.FontFile = reader.ReadLine();
+			reader.Close();
 		}
 
 		private void timer_Tick(object sender, EventArgs e)
@@ -117,6 +151,11 @@ namespace Clock
 			else rk.DeleteValue(key_name, false);
 			//false - НЕ бросать исключение при отсутствии удаляемой ветки.
 			rk.Dispose();
+		}
+
+		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			SaveSettings();
 		}
 	}
 }
