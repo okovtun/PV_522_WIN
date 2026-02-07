@@ -37,6 +37,7 @@ namespace Clock
 			Directory.SetCurrentDirectory($"{Application.ExecutablePath}\\..\\..\\..");
 			string filename = "Settings.ini";
 			StreamWriter writer = new StreamWriter(filename);
+			writer.WriteLine($"{this.Location.X}x{this.Location.Y}");
 			writer.WriteLine(tsmiTopmost.Checked);
 			writer.WriteLine(tsmiShowControls.Checked);
 			writer.WriteLine(tsmiShowDate.Checked);
@@ -56,6 +57,12 @@ namespace Clock
 			try
 			{
 				reader = new StreamReader("Settings.ini");
+				string location = reader.ReadLine();
+				this.Location = new Point
+					(
+					Convert.ToInt16(location.Split('x').First()), 
+					Convert.ToInt16(location.Split('x').Last())
+					);
 				tsmiTopmost.Checked = bool.Parse(reader.ReadLine());
 				tsmiShowControls.Checked = bool.Parse(reader.ReadLine());
 				tsmiShowDate.Checked = bool.Parse(reader.ReadLine());
