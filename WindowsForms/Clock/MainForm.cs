@@ -29,7 +29,7 @@ namespace Clock
 			tsmiShowControls.Checked = true;
 			backgroundDialog = new ColorDialog();
 			foregroundDialog = new ColorDialog();
-			fontDialog = new FontDialog(this);
+			//fontDialog = new FontDialog(this);
 			LoadSettings();
 		}
 		void SaveSettings()
@@ -45,15 +45,17 @@ namespace Clock
 			writer.WriteLine(labelTime.BackColor.ToArgb());
 			writer.WriteLine(labelTime.ForeColor.ToArgb());
 			writer.WriteLine(fontDialog.FontFile);
+			writer.WriteLine(fontDialog.FontSize);
 			writer.Close();
 			Process.Start("notepad", filename);
 		}
 		void LoadSettings()
 		{
 			Directory.SetCurrentDirectory($"{Application.ExecutablePath}\\..\\..\\..");
+			StreamReader reader=null;
 			try
 			{
-				StreamReader reader = new StreamReader("Settings.ini");
+				reader = new StreamReader("Settings.ini");
 				tsmiTopmost.Checked = bool.Parse(reader.ReadLine());
 				tsmiShowControls.Checked = bool.Parse(reader.ReadLine());
 				tsmiShowDate.Checked = bool.Parse(reader.ReadLine());
@@ -62,7 +64,9 @@ namespace Clock
 				labelTime.BackColor = backgroundDialog.Color = Color.FromArgb(Convert.ToInt32(reader.ReadLine()));
 				labelTime.ForeColor = foregroundDialog.Color = Color.FromArgb(Convert.ToInt32(reader.ReadLine()));
 				//fontDialog = new FontDialog(this);
-				fontDialog.FontFile = reader.ReadLine();
+				//fontDialog.FontFile = reader.ReadLine();
+				fontDialog = new FontDialog(this, reader.ReadLine());
+				fontDialog.FontSize = (float)Convert.ToDouble(reader.ReadLine());
 				labelTime.Font = fontDialog.ApplyFontExample(fontDialog.FontFile);
 				reader.Close();
 			}
@@ -70,6 +74,7 @@ namespace Clock
 			{
 				MessageBox.Show(this, ex.Message);
 			}
+			if (reader != null) reader.Close();
 		}
 
 		private void timer_Tick(object sender, EventArgs e)
