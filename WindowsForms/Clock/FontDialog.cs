@@ -42,11 +42,11 @@ namespace Clock
 		void LoadFonts()
 		{
 			//AllocConsole();
-			Console.WriteLine(Application.ExecutablePath);
+			//Console.WriteLine(Application.ExecutablePath);
 			//Directory.SetCurrentDirectory($"{Application.ExecutablePath}");
 			Directory.SetCurrentDirectory($"{Application.ExecutablePath}\\..\\..\\..\\Fonts");
 			//Console.WriteLine($"{Directory.GetParent(Application.StartupPath)?.Parent?.FullName}\\Fonts");
-			Console.WriteLine(Directory.GetCurrentDirectory());
+			//Console.WriteLine(Directory.GetCurrentDirectory());
 			//LoadFonts(Directory.GetCurrentDirectory(), "*.otf");
 			//LoadFonts(Directory.GetCurrentDirectory(), "*.ttf");
 			Traverse(Directory.GetCurrentDirectory());
