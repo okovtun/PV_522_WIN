@@ -11,6 +11,9 @@ Jeffrey Richter:
 https://github.com/maybez/maybe/blob/master/Books/windows/Windows%20Via%20C%EF%BC%8FC++,Fifth%20Edition%20.pdf
 
 TODO:
+Установить SSMS.
+
+DONE:
 1. !!! Проветрить часы на долговременную рабобту с кастомным шрифтом.
    Часы НЕ должны падать и шрифт НЕ должен слетать;
 2.*Решить проблему со шрифтами во вложенных папках;		DONE

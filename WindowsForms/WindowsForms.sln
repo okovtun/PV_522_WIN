@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.36001.139
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clock", "Clock\Clock.csproj", "{A014E302-7959-4B9B-8327-F1333E24E2B1}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ClockSetup", "ClockSetup\ClockSetup.vdproj", "{D8FA711C-F2E0-4A57-ABFD-00BC33BCA4FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,10 @@ Global
 		{A014E302-7959-4B9B-8327-F1333E24E2B1}.Release|x64.Build.0 = Release|Any CPU
 		{A014E302-7959-4B9B-8327-F1333E24E2B1}.Release|x86.ActiveCfg = Release|Any CPU
 		{A014E302-7959-4B9B-8327-F1333E24E2B1}.Release|x86.Build.0 = Release|Any CPU
+		{D8FA711C-F2E0-4A57-ABFD-00BC33BCA4FE}.Debug|x64.ActiveCfg = Debug
+		{D8FA711C-F2E0-4A57-ABFD-00BC33BCA4FE}.Debug|x86.ActiveCfg = Debug
+		{D8FA711C-F2E0-4A57-ABFD-00BC33BCA4FE}.Release|x64.ActiveCfg = Release
+		{D8FA711C-F2E0-4A57-ABFD-00BC33BCA4FE}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

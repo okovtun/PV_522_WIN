@@ -24,6 +24,7 @@ namespace Clock
 		public MainForm()
 		{
 			InitializeComponent();
+			AllocConsole();
 			this.Location = new Point
 				(
 					Screen.PrimaryScreen.Bounds.Width - this.Width - 50,
@@ -32,18 +33,27 @@ namespace Clock
 			tsmiShowControls.Checked = true;
 			backgroundDialog = new ColorDialog();
 			foregroundDialog = new ColorDialog();
-			//fontDialog = new FontDialog(this);
+			fontDialog = new FontDialog(this, "");
 			LoadSettings();
-			//AllocConsole();
 		}
 		[DllImport("kernel32.dll")]
 		public static extern bool AllocConsole();
 		[DllImport("kernel32.dll")]
 		public static extern bool FreeConsole();
 
+		void SetSettingsDirectory()
+		{
+			Console.WriteLine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
+			Directory.SetCurrentDirectory($"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}");
+			IEnumerable<string> dirs = Directory.EnumerateDirectories(Directory.GetCurrentDirectory());
+			string dir = "ClockPV_522";
+			if (!dirs.Contains(dir)) Directory.CreateDirectory(dir);
+			Directory.SetCurrentDirectory(dir);
+		}
 		void SaveSettings()
 		{
-			Directory.SetCurrentDirectory($"{Application.ExecutablePath}\\..\\..\\..");
+			SetSettingsDirectory();
+			//Directory.SetCurrentDirectory($"{Application.ExecutablePath}\\..\\..\\..");
 			string filename = "Settings.ini";
 			StreamWriter writer = new StreamWriter(filename);
 			writer.WriteLine($"{this.Location.X}x{this.Location.Y}");
@@ -61,7 +71,8 @@ namespace Clock
 		}
 		void LoadSettings()
 		{
-			Directory.SetCurrentDirectory($"{Application.ExecutablePath}\\..\\..\\..");
+			SetSettingsDirectory();
+			//Directory.SetCurrentDirectory($"{Application.ExecutablePath}\\..\\..\\..");
 			StreamReader reader = null;
 			try
 			{
@@ -195,15 +206,15 @@ namespace Clock
 			Console.WriteLine($"Window location:{this.Location};\tCursor position:{Cursor.Position}\t{e.Location}");
 			if (mouseDown) this.Location = new Point
 				 (
-					 Cursor.Position.X - mouseLocation.X,
-					 Cursor.Position.Y - mouseLocation.Y
+					 Cursor.Position.X - labelTime.Location.X - mouseLocation.X,
+					 Cursor.Position.Y - labelTime.Location.Y - mouseLocation.Y
 				 );
-			Console.WriteLine(new Point
-				(
-					Cursor.Position.X - e.Location.X,
-					Cursor.Position.Y - e.Location.Y
-				));
-			Console.WriteLine("\n======================================\n");
+			//Console.WriteLine(new Point
+			//	(
+			//		Cursor.Position.X - e.Location.X,
+			//		Cursor.Position.Y - e.Location.Y
+			//	));
+			//Console.WriteLine("\n======================================\n");
 		}
 
 		private void labelTime_MouseDown(object sender, MouseEventArgs e)
