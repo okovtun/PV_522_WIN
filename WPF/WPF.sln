@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.36001.139
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF", "WPF\WPF.csproj", "{F7C399E1-68F9-4E69-93F8-AB7B6241A044}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grid", "Grid\Grid.csproj", "{FE7E3F63-7EA9-41F2-817A-A22363F9CE1A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F7C399E1-68F9-4E69-93F8-AB7B6241A044}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7C399E1-68F9-4E69-93F8-AB7B6241A044}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7C399E1-68F9-4E69-93F8-AB7B6241A044}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE7E3F63-7EA9-41F2-817A-A22363F9CE1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE7E3F63-7EA9-41F2-817A-A22363F9CE1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE7E3F63-7EA9-41F2-817A-A22363F9CE1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE7E3F63-7EA9-41F2-817A-A22363F9CE1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
