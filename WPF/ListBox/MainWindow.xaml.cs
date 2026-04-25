@@ -24,31 +24,46 @@ namespace ListBox
 		{
 			InitializeComponent();
 		}
-		void button_Click(object sender, EventArgs e)
+		void DlgProc(object sender, EventArgs e)
 		{
-			switch ((sender as Button).Content)
+			//MessageBox.Show(sender.GetType().ToString().Split('.').Last());
+			//MessageBox.Show(sender.GetType().ToString());
+			//switch (sender.GetType().ToString().Split('.').Last())
+			switch (sender.GetType().Name)
 			{
-				case "ADD":
-					if (!listBox.Items.Contains(tbInput.Text))
+				case nameof(TextBox):if ((e as KeyEventArgs).Key == Key.Enter) DlgProc(btnAdd, null);	break;
+				case nameof(ListBox):if ((e as KeyEventArgs).Key == Key.Delete) DlgProc(btnDel, null);	break;
+				case nameof(Button):
+					switch ((sender as Button).Content)
 					{
-						if (tbInput.Text.Trim() == "") break;
-						listBox.Items.Add(tbInput.Text);
-						tbInput.Text = "";
-						tbInput.Focus();
+						case "ADD":
+							if (!listBox.Items.Contains(tbInput.Text))
+							{
+								if (tbInput.Text.Trim() == "") break;
+								listBox.Items.Add(tbInput.Text);
+								tbInput.Text = "";
+								tbInput.Focus();
+							}
+							break;
+						case "DEL":
+							if (listBox.SelectedIndex >= 0)
+								listBox.Items.RemoveAt(listBox.SelectedIndex);
+							break;
+						case "CLR": listBox.Items.Clear(); break;
 					}
 					break;
-				case "DEL":
-					if (listBox.SelectedIndex >= 0)
-						listBox.Items.RemoveAt(listBox.SelectedIndex);
-					break;
-				case "CLR":	listBox.Items.Clear();	break;
 			}
 		}
 
-		private void KeyDown(object sender, KeyEventArgs e)
+		private void ListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
 		{
-			if (sender is TextBox && e.Key == Key.Enter) button_Click(btnAdd, null);
-			if (sender is System.Windows.Controls.ListBox && e.Key == Key.Delete) button_Click(btnDel, null);
+			MessageBox.Show(listBox.SelectedItem.ToString());
 		}
+
+		//private void KeyDown(object sender, KeyEventArgs e)
+		//{
+		//	if (sender is TextBox && e.Key == Key.Enter) button_Click(btnAdd, null);
+		//	if (sender is System.Windows.Controls.ListBox && e.Key == Key.Delete) button_Click(btnDel, null);
+		//}
 	}
 }

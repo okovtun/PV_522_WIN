@@ -19,13 +19,14 @@
 		<TextBox Name="tbInput" 
 				 Margin="5" 
 				 HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-				 KeyDown="KeyDown"
+				 KeyDown="DlgProc"
 				 />
 		
 		<ListBox Name="listBox"
 				 Grid.Row="1" Grid.ColumnSpan="2" 
 				 Margin="5"
-				 KeyDown="KeyDown"
+				 KeyDown="DlgProc"
+				 MouseDoubleClick="ListBox_MouseDoubleClick"
 				 />
 
 		<Grid Grid.Row="0" Grid.Column="1">
@@ -34,9 +35,9 @@
 				<ColumnDefinition />
 				<ColumnDefinition />
 			</Grid.ColumnDefinitions>
-			<Button Content="ADD" Grid.Column="0" Margin="5" Click="button_Click" Name="btnAdd" />
-			<Button Content="DEL" Grid.Column="1" Margin="5" Click="button_Click" Name="btnDel" />
-			<Button Content="CLR" Grid.Column="2" Margin="5" Click="button_Click" />
+			<Button Content="ADD" Grid.Column="0" Margin="5" Click="DlgProc" Name="btnAdd" />
+			<Button Content="DEL" Grid.Column="1" Margin="5" Click="DlgProc" Name="btnDel" />
+			<Button Content="CLR" Grid.Column="2" Margin="5" Click="DlgProc" />
 		</Grid>
 
 	</Grid>
