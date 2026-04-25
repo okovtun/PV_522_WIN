@@ -45,9 +45,10 @@ namespace ListBox
 			}
 		}
 
-		private void TbInput_KeyDown(object sender, KeyEventArgs e)
+		private void KeyDown(object sender, KeyEventArgs e)
 		{
-			if (e.Key == Key.Enter) button_Click(btnAdd, null);
+			if (sender is TextBox && e.Key == Key.Enter) button_Click(btnAdd, null);
+			if (sender is System.Windows.Controls.ListBox && e.Key == Key.Delete) button_Click(btnDel, null);
 		}
 	}
 }
