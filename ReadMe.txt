@@ -11,6 +11,10 @@ Jeffrey Richter:
 https://github.com/maybez/maybe/blob/master/Books/windows/Windows%20Via%20C%EF%BC%8FC++,Fifth%20Edition%20.pdf
 
 TODO:
+1. При нажатии на Escape текстовое поле должно очищаться;
+2. При нажатии клавиши Enter фокус должен переходить на следующее текстовое поле;
+
+DONE:
 1. Напомнить о том, что в проекте 'Binding' сделано не все;
 2. Напомнить обсудить курсачи;
 
